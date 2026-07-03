@@ -3,8 +3,8 @@ class Hma < Formula
 
   desc "Self-hosted, fail-closed approval server for AI agents"
   homepage "https://holdmyagent.com"
-  url "https://files.pythonhosted.org/packages/c6/d2/c11a5392e717a0c20f410a8e63684c417e2156428dc43c4c231f3356695a/holdmyagent-2.0.0.tar.gz"
-  sha256 "015b03c374695e7a925c252e91202c058d5814cb9cb35bf635bae91cd96bfe6b"
+  url "https://files.pythonhosted.org/packages/dc/1c/2acbaf5e8dcab31bae05de9c1f4fa1630e628bb2bb71d2b3086c2585aeb1/holdmyagent-0.2.0.tar.gz"
+  sha256 "dd7b72cb25dc742a82ec91baf5bf98e6f0d607c7aa5707d9a4070c534cfa2d4e"
   license "MIT"
 
   depends_on "rust" => :build
