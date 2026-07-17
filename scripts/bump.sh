@@ -3,13 +3,18 @@
 #
 # Fetches PyPI metadata, rewrites the formula's url/sha256 to the latest
 # sdist, and regenerates the resource (dependency) blocks with
-# `brew update-python-resources`. Only edits the formula -- review the diff
-# and commit it yourself.
+# `brew update-python-resources`. Only edits the formula -- this script does
+# NOT audit, install, or test it. Review the diff and commit it yourself.
 #
 # Must be run from within a real `brew tap`-cloned copy of this repo (i.e.
 # a directory under $(brew --repository)/Library/Taps/...): Homebrew's
 # `update-python-resources` refuses to operate on a formula file that isn't
 # inside a known tap.
+#
+# Before committing, audit/install/test the result. Homebrew >=6 removed the
+# bare-path `brew audit`/`brew install` flow (a formula must belong to a
+# known tap), so use a throwaway tap-scratch tap instead -- see the
+# "Testing formula changes before committing" section of README.md.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -84,6 +89,9 @@ diff --stat "$FORMULA.bak" "$FORMULA" || true
 diff -u "$FORMULA.bak" "$FORMULA" || true
 
 echo
-echo "==> Done. Review the diff above, then commit manually, e.g.:"
+echo "==> Done. Audit/install/test before committing -- see README.md's"
+echo "    'Testing formula changes before committing' section (Homebrew >=6"
+echo "    needs a tap-scratch tap; bare-path brew audit/install no longer"
+echo "    works). Then commit manually, e.g.:"
 echo "    git -C \"$REPO_ROOT\" add Formula/hma.rb"
 echo "    git -C \"$REPO_ROOT\" commit -m \"chore: bump hma to $VERSION\""
