@@ -3,8 +3,8 @@ class Hma < Formula
 
   desc "Self-hosted, fail-closed approval server for AI agents"
   homepage "https://holdmyagent.com"
-  url "https://files.pythonhosted.org/packages/bc/3e/38a9b7c3be61cda7205328c2f430e38d7acf400f47e42eab51620c5f927d/holdmyagent-0.3.0.tar.gz"
-  sha256 "063a23e132e9d448ad146d90e63b350b71dcd43fa767a9a0b4eaba3b756a601d"
+  url "https://files.pythonhosted.org/packages/76/53/7ae482ec316dd58c98277b561b6e36c13d87d4568b8ee327bcc870653c45/holdmyagent-0.4.0.tar.gz"
+  sha256 "95fc88d95ceb691b4dda775209a66f243132e394872efc0c6263245eb832e4d9"
   license "MIT"
 
   depends_on "rust" => :build
@@ -23,8 +23,8 @@ class Hma < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/3b/72/5562aabb8dd7181e8e860622a38bea08d17842b99ecd4c91f84ac95251b0/anyio-4.14.1.tar.gz"
-    sha256 "8d648a3544c1a700e3ff78615cd679e4c5c3f149904287e73687b2596963629e"
+    url "https://files.pythonhosted.org/packages/61/cc/a381afa6efea9f496eff839d4a6a1aed3bfafc7b3ab4b0d1b243a12573dd/anyio-4.14.2.tar.gz"
+    sha256 "cfa139f3ed1a23ee8f88a145ddb5ac7605b8bbfd8592baacd7ce3d8bb4313c7f"
   end
 
   resource "certifi" do
@@ -33,8 +33,8 @@ class Hma < Formula
   end
 
   resource "cffi" do
-    url "https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz"
-    sha256 "44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529"
+    url "https://files.pythonhosted.org/packages/57/5f/ff100cae70ebe9d8df1c01a00e510e45d9adb5c1fdda84791b199141de97/cffi-2.1.0.tar.gz"
+    sha256 "efc1cdd798b1aaf39b4610bba7aad28c9bea9b910f25c784ccf9ec1fa719d1f9"
   end
 
   resource "click" do
@@ -48,8 +48,8 @@ class Hma < Formula
   end
 
   resource "fastapi" do
-    url "https://files.pythonhosted.org/packages/d3/af/a5f50ccfa659ec1802cb4ca842c23f06d906a8cc9aef6016a2caeea3d4ed/fastapi-0.139.0.tar.gz"
-    sha256 "99ab7b2d92223c76d6cf10757ab3f89d45b38267fc20b2a136cf02f6beac3145"
+    url "https://files.pythonhosted.org/packages/cd/95/d3f0ae10836324a2eab98a52b61210ac609f08200bf4bb0dc8132d32f78a/fastapi-0.139.2.tar.gz"
+    sha256 "333145a6891e9b5b3cfceb69baf817e8240cde4d4588ae5a10bf56ffacb6255e"
   end
 
   resource "h11" do
@@ -153,8 +153,8 @@ class Hma < Formula
   end
 
   resource "tomlkit" do
-    url "https://files.pythonhosted.org/packages/51/db/03eaf4331631ef6b27d6e3c9b68c54dc6f0d63d87201fed600cc409307fd/tomlkit-0.15.0.tar.gz"
-    sha256 "7d1a9ecba3086638211b13814ea79c90dd54dd11993564376f3aa92271f5c7a3"
+    url "https://files.pythonhosted.org/packages/94/96/e07752635b98536177fa1f37671c8f3cdde2e724c6bcf6034b2cfb571565/tomlkit-0.15.1.tar.gz"
+    sha256 "e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97"
   end
 
   resource "typing-extensions" do
@@ -168,8 +168,8 @@ class Hma < Formula
   end
 
   resource "uvicorn" do
-    url "https://files.pythonhosted.org/packages/c4/1f/fa18009dea8469069cca78a4e877a008ab78f08b064bfc9ab891579077ff/uvicorn-0.49.0.tar.gz"
-    sha256 "ebf4271aa580d9de97f93192d4595176df6e91f9aae919ca73e4fc07df1e66a3"
+    url "https://files.pythonhosted.org/packages/a2/65/b7c6c443ccc58678c91e1e973bbe2a878591538655d6e1d47f24ba1c51f3/uvicorn-0.51.0.tar.gz"
+    sha256 "f6f4b69b657c312f516dd2d268ab9ae6f254b11e4bac504f37b2ab58b24dd0b0"
   end
 
   resource "uvloop" do
@@ -183,8 +183,8 @@ class Hma < Formula
   end
 
   resource "websockets" do
-    url "https://files.pythonhosted.org/packages/04/24/4b2031d72e840ce4c1ccb255f693b15c334757fc50023e4db9537080b8c4/websockets-16.0.tar.gz"
-    sha256 "5f6261a5e56e8d5c42a4497b364ea24d94d9563e8fbd44e78ac40879c60179b5"
+    url "https://files.pythonhosted.org/packages/8c/02/b9a097e1e16fee4e2fd1ec8c39f6a9c5d6257bae8fa12640caf869f54436/websockets-16.1.tar.gz"
+    sha256 "299468cbe42e2b9981134c7c51d99387d8a7bf562b00183b3eec53f882846dad"
   end
 
   def install
