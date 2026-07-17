@@ -39,6 +39,28 @@ dependency resolution (a built-in release-cooldown safety check), so
 `scripts/bump.sh` may need to be re-run a day after a new release before it
 can see it.
 
+### Testing formula changes before committing
+
+`bump.sh` only edits `Formula/hma.rb` — it does not audit, install, or test
+it. Do that yourself before committing.
+
+Homebrew 6 removed the bare-path `brew audit ./Formula/hma.rb` /
+`brew install ./Formula/hma.rb` flow: a formula must belong to a known tap,
+so a path relative to a plain git checkout is rejected. Use a throwaway tap
+instead:
+
+```
+brew tap-new local/scratch
+cp Formula/hma.rb "$(brew --repo local/scratch)/Formula/hma.rb"
+brew audit --formula --strict --new local/scratch/hma
+brew install --formula local/scratch/hma
+brew test local/scratch/hma
+brew uninstall hma
+brew untap local/scratch
+```
+
+Once audit/install/test pass, commit the `Formula/hma.rb` diff as usual.
+
 Automating this bump across repositories (opening a PR here whenever a new
 `holdmyagent` release lands) is deferred — it requires a GitHub personal
 access token with write access to this repository, wired into CI on the
