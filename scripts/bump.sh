@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Bump Formula/hma.rb to the latest holdmyagent release on PyPI.
+# Bump a Hold My Agent formula to its package's latest release on PyPI.
+#
+# Usage: scripts/bump.sh [PKG]   (PKG = holdmyagent [default] | hold-warden)
+#   holdmyagent -> Formula/hma.rb        hold-warden -> Formula/hma-warden.rb
 #
 # Fetches PyPI metadata, rewrites the formula's url/sha256 to the latest
 # sdist, and regenerates the resource (dependency) blocks with
@@ -19,15 +22,25 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-FORMULA="$REPO_ROOT/Formula/hma.rb"
+
+# Which package/formula to bump. No arg keeps the original holdmyagent behavior.
+PKG="${1:-holdmyagent}"
+case "$PKG" in
+  holdmyagent)  FORMULA="$REPO_ROOT/Formula/hma.rb";        NAME="hma" ;;
+  hold-warden)  FORMULA="$REPO_ROOT/Formula/hma-warden.rb"; NAME="hma-warden" ;;
+  *)
+    echo "ERROR: unknown package '$PKG' (expected: holdmyagent | hold-warden)" >&2
+    exit 1
+    ;;
+esac
 
 if [ ! -f "$FORMULA" ]; then
   echo "ERROR: $FORMULA not found" >&2
   exit 1
 fi
 
-echo "==> Fetching holdmyagent metadata from PyPI..."
-META_JSON="$(curl -fsSL https://pypi.org/pypi/holdmyagent/json)"
+echo "==> Fetching $PKG metadata from PyPI..."
+META_JSON="$(curl -fsSL "https://pypi.org/pypi/$PKG/json")"
 if [ -z "$META_JSON" ]; then
   echo "ERROR: empty response fetching PyPI metadata" >&2
   exit 1
@@ -93,5 +106,5 @@ echo "==> Done. Audit/install/test before committing -- see README.md's"
 echo "    'Testing formula changes before committing' section (Homebrew >=6"
 echo "    needs a tap-scratch tap; bare-path brew audit/install no longer"
 echo "    works). Then commit manually, e.g.:"
-echo "    git -C \"$REPO_ROOT\" add Formula/hma.rb"
-echo "    git -C \"$REPO_ROOT\" commit -m \"chore: bump hma to $VERSION\""
+echo "    git -C \"$REPO_ROOT\" add ${FORMULA#"$REPO_ROOT"/}"
+echo "    git -C \"$REPO_ROOT\" commit -m \"chore: bump $NAME to $VERSION\""
