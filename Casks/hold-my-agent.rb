@@ -7,7 +7,7 @@ cask "hold-my-agent" do
   desc "Menu-bar approvals client for Hold My Agent / Arbiter"
   homepage "https://github.com/holdmyagent/macos"
 
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "Hold My Agent.app"
 end
